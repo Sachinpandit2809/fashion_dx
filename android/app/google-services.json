@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630487406759",
+    "project_id": "fashion-dx",
+    "storage_bucket": "fashion-dx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630487406759:android:54e3a0d4216d343e63a382",
+        "android_client_info": {
+          "package_name": "com.example.fashion_dx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTNQg4lIWRgCE0Vh_khVW_qsr4PJAwzJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
