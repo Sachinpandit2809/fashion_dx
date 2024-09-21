@@ -1,10 +1,8 @@
 import 'package:fashion_dx/common_widgets/flexible_button.dart';
 import 'package:fashion_dx/common_widgets/k_password_textformfield.dart';
-import 'package:fashion_dx/common_widgets/k_text_form_field.dart';
 import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
-import 'package:fashion_dx/screens/auth/forget_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 

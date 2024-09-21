@@ -2,6 +2,7 @@ import 'package:fashion_dx/common_widgets/flexible_button.dart';
 import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
+import 'package:fashion_dx/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -45,7 +46,15 @@ class _SplashScreeenState extends State<SplashScreen> {
                   style: KTextStyle.k_14.copyWith(color: AppColors.white),
                 ),
                 60.heightBox,
-                FlexibleButton(title: "Get Started", onPress: () {})
+                FlexibleButton(
+                    title: "Get Started",
+                    // loading: true,
+                    onPress: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    })
               ],
             ),
           )
