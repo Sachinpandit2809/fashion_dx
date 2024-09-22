@@ -26,7 +26,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
         color: Color.fromRGBO(30, 60, 87, 1),
         fontWeight: FontWeight.w600),
     decoration: BoxDecoration(
-      border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+      border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
       borderRadius: BorderRadius.circular(20),
     ),
   );
@@ -114,7 +114,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                             return Container(
                               height: MediaQuery.of(context).size.height * .4,
                               width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   // color: Colors.red,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(28),
@@ -127,15 +127,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                                       backgroundColor:
                                           AppColors.grey.withOpacity(0.05),
                                       radius: 50,
-                                      child: Image(
+                                      child: const Image(
                                         image: AssetImage(
                                             "assets/images/png/Success.png"),
                                       )),
-                                  Text(
+                                  const Text(
                                     "Your password has been changed ",
                                     style: KTextStyle.k_18,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Welcome Back! Discover Now! ",
                                     style: KTextStyle.k_12,
                                   ),

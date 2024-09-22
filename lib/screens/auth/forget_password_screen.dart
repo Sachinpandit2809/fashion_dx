@@ -4,8 +4,6 @@ import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:fashion_dx/screens/auth/login_screen.dart';
-import 'package:fashion_dx/screens/auth/varification_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
@@ -73,11 +71,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       btnColor: AppColors.buttonColor,
                       title: "RESET",
                       onPress: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const VarificationScreen()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             const VarificationScreen()));
                       }))
             ],
           ),

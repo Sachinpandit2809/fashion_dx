@@ -3,7 +3,7 @@ import 'package:fashion_dx/common_widgets/k_text_form_field.dart';
 import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
-import 'package:fashion_dx/screen_controller/auth_controller.dart';
+import 'package:fashion_dx/screen_controller/authController/auth_controller.dart';
 import 'package:fashion_dx/screens/auth/login_screen.dart';
 import 'package:fashion_dx/utIls/utils.dart';
 import 'package:flutter/material.dart';
