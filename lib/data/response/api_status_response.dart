@@ -1,4 +1,5 @@
 import 'package:fashion_dx/data/response/status.dart';
+import 'package:fashion_dx/modals/fashion_home.dart';
 
 class ApiStatusResponse<T> {
   Status? status;
@@ -6,8 +7,8 @@ class ApiStatusResponse<T> {
   String? message;
   ApiStatusResponse(this.status, this.data, this.message);
   ApiStatusResponse.loading() : status = Status.LOADING;
-  ApiStatusResponse.completed() : status = Status.COMPLETED;
-  ApiStatusResponse.error() : status = Status.ERROR;
+  ApiStatusResponse.completed(this.data) : status = Status.COMPLETED;
+  ApiStatusResponse.error(this.message) : status = Status.ERROR;
 
  @override
   String toString() {
