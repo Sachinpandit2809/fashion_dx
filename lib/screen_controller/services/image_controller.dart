@@ -7,6 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageController with ChangeNotifier {
+  bool _uploadLoading = false;
+  bool get uploadLoading => _uploadLoading;
+  void setUploadLoading(bool load) {
+    _uploadLoading = load;
+    notifyListeners();
+  }
+
   File? _image;
   File? get image => _image;
   void setImage(File image) {
@@ -16,10 +23,11 @@ class ImageController with ChangeNotifier {
 
   final picker = ImagePicker();
   String? _imageUrl;
+  String? get imageUrl => _imageUrl;
 
   // Function to capture image from camera
-  Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+  Future getImage(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile != null) {
       setImage(File(pickedFile.path));
@@ -33,7 +41,12 @@ class ImageController with ChangeNotifier {
 
   // Function to upload the image to Firebase Storage
   Future uploadImageToFirebase() async {
-    if (_image == null) return;
+    setUploadLoading(true);
+    if (_image == null) {
+      setUploadLoading(false);
+      Utils.toastErrorMessage("Image not selected");
+      return;
+    }
     try {
       String fileName = DateTime.now().toString();
       Reference firebaseStorageRef =
@@ -43,9 +56,18 @@ class ImageController with ChangeNotifier {
       // Get the URL of the uploaded image
       _imageUrl = await taskSnapshot.ref.getDownloadURL();
       debugPrint("Image uploaded and URL/////////////////////=>: $_imageUrl");
+      setUploadLoading(false);
     } catch (e) {
+      setUploadLoading(false);
+
       Utils.toastErrorMessage("Error uploading image" + e.toString());
       debugPrint("Error uploading image: $e");
     }
+  }
+
+  setImageToNull() {
+    _image = null;
+    _imageUrl = null;
+    notifyListeners();
   }
 }

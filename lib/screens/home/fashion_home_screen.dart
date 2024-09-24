@@ -3,6 +3,7 @@ import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:fashion_dx/screen_controller/screenController/fashion_home_controller.dart';
+import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -106,6 +107,13 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddFashionScreen()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

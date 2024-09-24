@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         'email': emailController.text.toString(),
                         'password': passwordController.text.toString()
                       };
-                      authController.login(data);
+                      authController.login(data, context);
                       debugPrint("triggred completed");
                     },
                     btnColor: AppColors.buttonColor,

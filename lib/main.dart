@@ -1,5 +1,6 @@
 import 'package:fashion_dx/screen_controller/authController/auth_controller.dart';
 import 'package:fashion_dx/screen_controller/authController/firebase_auth_controller.dart';
+import 'package:fashion_dx/screen_controller/screenController/add_product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
 import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthController()),
         ChangeNotifierProvider(create: (_) => ImageController()),
+        ChangeNotifierProvider(create: (_) => AddProductController()),
         ChangeNotifierProvider(create: (_) => FirebaseAuthController())
       ],
       child: MaterialApp(
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: const AddFashionScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
