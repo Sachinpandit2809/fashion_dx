@@ -2,7 +2,8 @@ import 'package:fashion_dx/screen_controller/authController/auth_controller.dart
 import 'package:fashion_dx/screen_controller/authController/firebase_auth_controller.dart';
 import 'package:fashion_dx/screen_controller/screenController/add_product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
-import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
+// import 'package:fashion_dx/screens/home/add_product_screen.dart';
+import 'package:fashion_dx/screens/home/edit_product_screen.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
 import 'package:fashion_dx/screens/home/upload_image.dart';
 import 'package:fashion_dx/screens/text.dart';

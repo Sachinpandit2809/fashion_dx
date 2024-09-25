@@ -17,6 +17,3 @@ class AddProductRepository {
   }
 }
 
-// cloth accesories
-// this is a good and classy product 
-// this is a good and classy product 

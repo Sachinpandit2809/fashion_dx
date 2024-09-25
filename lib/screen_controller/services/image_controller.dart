@@ -24,6 +24,10 @@ class ImageController with ChangeNotifier {
   final picker = ImagePicker();
   String? _imageUrl;
   String? get imageUrl => _imageUrl;
+  void setImageUrl(String? imageUrl) {
+    _imageUrl = imageUrl;
+    notifyListeners();
+  }
 
   // Function to capture image from camera
   Future getImage(ImageSource source) async {
@@ -58,7 +62,7 @@ class ImageController with ChangeNotifier {
       _imageUrl = await taskSnapshot.ref.getDownloadURL();
       debugPrint("Image uploaded and URL/////////////////////=>: $_imageUrl");
       setUploadLoading(false);
-      Utils.toastSuccessMessage("image uploaded please add product");
+      Utils.toastSuccessMessage("image uploaded");
     } catch (e) {
       setUploadLoading(false);
 

@@ -3,7 +3,10 @@ import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:fashion_dx/screen_controller/screenController/fashion_home_controller.dart';
+import 'package:fashion_dx/screen_controller/services/image_controller.dart';
 import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
+// import 'package:fashion_dx/screens/home/add_product_screen.dart';
+import 'package:fashion_dx/screens/home/edit_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +32,8 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
       backgroundColor: AppColors.white,
       body: ChangeNotifierProvider<FashionHomeController>(
         create: (constext) => fashionHomeController,
-        child: Consumer<FashionHomeController>(
-          builder: (context, value, child) {
+        child: Consumer2<FashionHomeController,ImageController>(
+          builder: (context, value,imageController, child) {
             switch (value.fashionDataList.status) {
               case Status.LOADING:
                 return const Center(child: CircularProgressIndicator());
@@ -63,37 +66,52 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                 value.fashionDataList.data!.fashionData!.length,
                             itemBuilder: (context, index) {
                               return Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 380,
-                                      width: 300,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: NetworkImage(value
-                                                .fashionDataList
-                                                .data!
-                                                .fashionData![index]
-                                                .image
-                                                .toString()),
-                                            fit: BoxFit.cover,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(22)),
-                                    ),
-                                    5.heightBox,
-                                    Text(
-                                        value.fashionDataList.data!
-                                            .fashionData![index].title
-                                            .toString(),
-                                        style: KTextStyle.k_16),
-                                    5.heightBox,
-                                    Text(
-                                        "\u{20B9}${value.fashionDataList.data!.fashionData![index].price}",
-                                        style: KTextStyle.k_18),
-                                    20.heightBox
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    imageController.setImageToNull();
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (constext) =>
+                                                EditProductScreen(
+                                                    fashionData: value
+                                                        .fashionDataList
+                                                        .data!
+                                                        .fashionData![index])));
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 380,
+                                        width: 300,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: NetworkImage(value
+                                                  .fashionDataList
+                                                  .data!
+                                                  .fashionData![index]
+                                                  .image
+                                                  .toString()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                      ),
+                                      5.heightBox,
+                                      Text(
+                                          value.fashionDataList.data!
+                                              .fashionData![index].title
+                                              .toString(),
+                                          style: KTextStyle.k_16),
+                                      5.heightBox,
+                                      Text(
+                                          "\u{20B9}${value.fashionDataList.data!.fashionData![index].price}",
+                                          style: KTextStyle.k_18),
+                                      20.heightBox
+                                    ],
+                                  ),
                                 ),
                               );
                             }),
