@@ -115,13 +115,19 @@ class _AddFashionScreenState extends State<AddFashionScreen> {
                                 );
                               })
                           : Container(
+                              height: 200, width: 150,
+
                               decoration: BoxDecoration(
-                                  // image: File(path)
-                                  ),
-                              child: Image.file(
-                                imageController.image!.absolute,
-                                height: 200,
-                              ),
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: FileImage(
+                                        imageController.image!.absolute,
+                                      ),
+                                      fit: BoxFit.cover)),
+                              // child: Image.file(
+                              //   imageController.image!.absolute,
+                              //   height: 200,
+                              // ),
                             ),
 
                       FlexibleButton(

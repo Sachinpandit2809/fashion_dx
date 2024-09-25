@@ -33,6 +33,7 @@ class ImageController with ChangeNotifier {
       setImage(File(pickedFile.path));
 
       print("Image selected: $_image");
+      Utils.toastSuccessMessage("image selected now upload");
     } else {
       Utils.toastErrorMessage("Image not selected");
     }
@@ -57,6 +58,7 @@ class ImageController with ChangeNotifier {
       _imageUrl = await taskSnapshot.ref.getDownloadURL();
       debugPrint("Image uploaded and URL/////////////////////=>: $_imageUrl");
       setUploadLoading(false);
+      Utils.toastSuccessMessage("image uploaded please add product");
     } catch (e) {
       setUploadLoading(false);
 
