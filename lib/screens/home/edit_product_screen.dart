@@ -77,11 +77,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       return null;
                     }),
                 (MediaQuery.sizeOf(context).height * .01).heightBox,
-                Text(
+                const Text(
                     "If you want to update the image \n1. change image \n2. upload \n3 update product"),
                 (MediaQuery.sizeOf(context).height * .01).heightBox,
                 Container(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   // color: Colors.cyanAccent,
                   child: Center(
                     child: Row(
@@ -189,14 +189,35 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             String imageLink = imageController.imageUrl == null
                                 ? widget.fashionData!.image.toString()
                                 : imageController.imageUrl.toString();
-                            Map data = {
+
+                            // FashionData data = FashionData(
+                            //     title: titleController.text.toString(),
+                            //     image: imageLink,
+                            //     description:
+                            //         descriptionController.text.toString(),
+                            //     price: priceController.text.toString(),
+                            //     // iV: widget.fashionData!.iV,
+                            //     sId: widget.fashionData!.sId);
+                            // FashionHomeModel d =
+                            //     FashionHomeModel(fashionData: [data]);
+                            // dynamic s = d.toJson();
+                             // addProductController.updateProduct(
+                            //     s['fashionData'][0], id, context);
+                            // debugPrint(s['fashionData'][0].toString());
+                            
+                            String id = widget.fashionData!.sId.toString();
+                            debugPrint(id);
+
+                            Map checkData = {
                               'title': titleController.text.toString(),
                               'image': imageLink,
                               'description':
                                   descriptionController.text.toString(),
-                              'price': priceController.text.toString()
+                              'price': priceController.text.toString(),
+                              'id': widget.fashionData!.sId.toString(),
                             };
-                            debugPrint(data.toString());
+                            addProductController.addProduct(checkData, context);
+                           
                           }),
                       (MediaQuery.sizeOf(context).height * .01).heightBox,
                       FlexibleButton(

@@ -25,4 +25,22 @@ class AddProductController with ChangeNotifier {
       });
     });
   }
+
+  bool _updateProductLoading = false;
+  bool get updateProductLoading => _updateProductLoading;
+  void setupdateProductLoading(bool load) {
+    _updateProductLoading = load;
+    notifyListeners();
+  }
+
+  void updateProduct(dynamic data, dynamic id, BuildContext context) async {
+    setupdateProductLoading(true);
+    _myRepo.updateProductApi(data, id).then((value) {
+      Utils.toastSuccessMessage("updated succesfully");
+    }).onError((error, stack) {
+      Utils.toastErrorMessage(error.toString());
+
+      setupdateProductLoading(false);
+    });
+  }
 }

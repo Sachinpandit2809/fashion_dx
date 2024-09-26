@@ -15,5 +15,14 @@ class AddProductRepository {
       throw e;
     }
   }
-}
 
+  Future<dynamic> updateProductApi(dynamic data, dynamic id) async {
+    try {
+      dynamic response =
+          await _apiServices.getPatchApiService(ApiUrl.fashon_home, data);
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+}
