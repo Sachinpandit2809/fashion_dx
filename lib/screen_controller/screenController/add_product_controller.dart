@@ -19,10 +19,9 @@ class AddProductController with ChangeNotifier {
       setaddProductLoading(false);
 
       Navigator.push(context,
-              MaterialPageRoute(builder: (context) => FashionHomeScreen()))
-          .onError((error, stack) {
-        setaddProductLoading(false);
-      });
+          MaterialPageRoute(builder: (context) => FashionHomeScreen()));
+    }).onError((error, stack) {
+      setaddProductLoading(false);
     });
   }
 
@@ -37,6 +36,8 @@ class AddProductController with ChangeNotifier {
     setupdateProductLoading(true);
     _myRepo.updateProductApi(data, id).then((value) {
       Utils.toastSuccessMessage("updated succesfully");
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => FashionHomeScreen()));
     }).onError((error, stack) {
       Utils.toastErrorMessage(error.toString());
 

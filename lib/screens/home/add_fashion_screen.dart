@@ -116,8 +116,8 @@ class _AddFashionScreenState extends State<AddFashionScreen> {
                               })
                           : Container(
                               height: 200, width: 150,
-
                               decoration: BoxDecoration(
+
                                   borderRadius: BorderRadius.circular(20),
                                   image: DecorationImage(
                                       image: FileImage(

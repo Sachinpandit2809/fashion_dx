@@ -36,7 +36,7 @@ class NetworkApiServices extends BaseApiServices {
   Future getPatchApiService(String url, data) async {
     dynamic responseJson;
     try {
-      dynamic response = await http.put(Uri.parse(url), body: data);
+      dynamic response = await http.patch(Uri.parse(url), body: data);
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException("No Internet Connection");

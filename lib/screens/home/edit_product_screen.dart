@@ -201,10 +201,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             // FashionHomeModel d =
                             //     FashionHomeModel(fashionData: [data]);
                             // dynamic s = d.toJson();
-                             // addProductController.updateProduct(
+                            // addProductController.updateProduct(
                             //     s['fashionData'][0], id, context);
                             // debugPrint(s['fashionData'][0].toString());
-                            
+
                             String id = widget.fashionData!.sId.toString();
                             debugPrint(id);
 
@@ -216,8 +216,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
                               'price': priceController.text.toString(),
                               'id': widget.fashionData!.sId.toString(),
                             };
-                            addProductController.addProduct(checkData, context);
-                           
+                            addProductController.updateProduct(
+                              checkData,
+                              id,
+                              context,
+                            );
                           }),
                       (MediaQuery.sizeOf(context).height * .01).heightBox,
                       FlexibleButton(

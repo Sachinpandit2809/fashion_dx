@@ -32,8 +32,8 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
       backgroundColor: AppColors.white,
       body: ChangeNotifierProvider<FashionHomeController>(
         create: (constext) => fashionHomeController,
-        child: Consumer2<FashionHomeController,ImageController>(
-          builder: (context, value,imageController, child) {
+        child: Consumer2<FashionHomeController, ImageController>(
+          builder: (context, value, imageController, child) {
             switch (value.fashionDataList.status) {
               case Status.LOADING:
                 return const Center(child: CircularProgressIndicator());
@@ -87,6 +87,8 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                         height: 380,
                                         width: 300,
                                         decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: AppColors.grey),
                                             image: DecorationImage(
                                               image: NetworkImage(value
                                                   .fashionDataList
@@ -109,7 +111,8 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                       Text(
                                           "\u{20B9}${value.fashionDataList.data!.fashionData![index].price}",
                                           style: KTextStyle.k_18),
-                                      20.heightBox
+                                      // Divider(),
+                                      20.heightBox,
                                     ],
                                   ),
                                 ),
@@ -126,13 +129,17 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddFashionScreen()));
-        },
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton:
+          Consumer<ImageController>(builder: (context, value, _) {
+        return FloatingActionButton(
+          onPressed: () {
+            value.setImageToNull();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddFashionScreen()));
+          },
+          child: const Icon(Icons.add),
+        );
+      }),
     );
   }
 }
