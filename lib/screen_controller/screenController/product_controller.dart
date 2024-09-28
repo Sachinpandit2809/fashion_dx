@@ -3,7 +3,7 @@ import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
 import 'package:fashion_dx/utIls/utils.dart';
 import 'package:flutter/material.dart';
 
-class AddProductController with ChangeNotifier {
+class ProductController with ChangeNotifier {
   bool _addProductLoading = false;
   bool get addProductLoading => _addProductLoading;
   void setaddProductLoading(bool load) {
@@ -43,5 +43,26 @@ class AddProductController with ChangeNotifier {
 
       setupdateProductLoading(false);
     });
+  }
+
+  bool _deleteProductLoading = false;
+  bool get deleteProductLoading => _deleteProductLoading;
+  void setdeleteProductLoading(bool load) {
+    _deleteProductLoading = load;
+    notifyListeners();
+  }
+
+  void deleteProduct(dynamic id, BuildContext context) {
+    setdeleteProductLoading(true);
+    _myRepo.deleteProductApi(id).then((value) {
+      Utils.toastSuccessMessage("deleted product");
+      setdeleteProductLoading(false);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> FashionHomeScreen()));
+    }).onError(
+      (error, stackTrace) {
+        Utils.toastErrorMessage(error.toString());
+        setdeleteProductLoading(false);
+      },
+    );
   }
 }

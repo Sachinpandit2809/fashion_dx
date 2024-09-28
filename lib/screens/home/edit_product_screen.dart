@@ -6,7 +6,7 @@ import 'package:fashion_dx/modals/fashion_home.dart';
 import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
-import 'package:fashion_dx/screen_controller/screenController/add_product_controller.dart';
+import 'package:fashion_dx/screen_controller/screenController/product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -50,7 +50,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(18.0),
-          child: Consumer2<ImageController, AddProductController>(
+          child: Consumer2<ImageController, ProductController>(
               builder: (context, imageController, addProductController, _) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,

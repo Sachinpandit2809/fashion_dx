@@ -16,10 +16,22 @@ class AddProductRepository {
     }
   }
 
+// update product
   Future<dynamic> updateProductApi(dynamic data, dynamic id) async {
     try {
       dynamic response =
           await _apiServices.getPatchApiService(ApiUrl.fashon_home, data);
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  // deleteProduct
+  Future<dynamic> deleteProductApi(dynamic id) async {
+    try {
+      dynamic response =
+          await _apiServices.getDeleteApiService(ApiUrl.fashon_home, id);
       return response;
     } catch (e) {
       throw e;

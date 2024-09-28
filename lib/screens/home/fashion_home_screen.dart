@@ -1,8 +1,10 @@
+import 'package:fashion_dx/common_widgets/flexible_button.dart';
 import 'package:fashion_dx/data/response/status.dart';
 import 'package:fashion_dx/resource/ext/num_ext.dart';
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:fashion_dx/screen_controller/screenController/fashion_home_controller.dart';
+import 'package:fashion_dx/screen_controller/screenController/product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
 import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
 // import 'package:fashion_dx/screens/home/add_product_screen.dart';
@@ -32,8 +34,9 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
       backgroundColor: AppColors.white,
       body: ChangeNotifierProvider<FashionHomeController>(
         create: (constext) => fashionHomeController,
-        child: Consumer2<FashionHomeController, ImageController>(
-          builder: (context, value, imageController, child) {
+        child: Consumer3<FashionHomeController, ImageController,
+            ProductController>(
+          builder: (context, value, imageController, productController, child) {
             switch (value.fashionDataList.status) {
               case Status.LOADING:
                 return const Center(child: CircularProgressIndicator());
@@ -102,15 +105,48 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                                 BorderRadius.circular(22)),
                                       ),
                                       5.heightBox,
-                                      Text(
-                                          value.fashionDataList.data!
-                                              .fashionData![index].title
-                                              .toString(),
-                                          style: KTextStyle.k_16),
-                                      5.heightBox,
-                                      Text(
-                                          "\u{20B9}${value.fashionDataList.data!.fashionData![index].price}",
-                                          style: KTextStyle.k_18),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                  value.fashionDataList.data!
+                                                      .fashionData![index].title
+                                                      .toString(),
+                                                  style: KTextStyle.k_16),
+                                              5.heightBox,
+                                              Text(
+                                                  "\u{20B9}${value.fashionDataList.data!.fashionData![index].price}",
+                                                  style: KTextStyle.k_18),
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          FlexibleButton(
+                                              btnColor: Colors.red,
+                                              width: 120,
+                                              title: "DELETE",
+                                              loading: productController.deleteProductLoading,
+                                              onPress: () {
+                                                productController.deleteProduct(
+                                                    {
+                                                      "id": value
+                                                          .fashionDataList
+                                                          .data!
+                                                          .fashionData![index]
+                                                          .sId
+                                                          .toString()
+                                                    },
+                                                    context);
+                                              }),
+                                          SizedBox(
+                                            width: 20,
+                                          )
+                                        ],
+                                      ),
                                       // Divider(),
                                       20.heightBox,
                                     ],
