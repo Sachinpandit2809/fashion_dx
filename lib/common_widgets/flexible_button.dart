@@ -1,8 +1,7 @@
 import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+
 
 // ignore: must_be_immutable
 class FlexibleButton extends StatefulWidget {

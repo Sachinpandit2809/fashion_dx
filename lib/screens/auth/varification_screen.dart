@@ -22,7 +22,7 @@ class _VarificationScreenState extends State<VarificationScreen> {
   final defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(30, 60, 87, 1),
         fontWeight: FontWeight.w600),

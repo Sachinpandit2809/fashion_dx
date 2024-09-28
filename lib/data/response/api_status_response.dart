@@ -1,5 +1,4 @@
 import 'package:fashion_dx/data/response/status.dart';
-import 'package:fashion_dx/modals/fashion_home.dart';
 
 class ApiStatusResponse<T> {
   Status? status;

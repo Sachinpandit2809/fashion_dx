@@ -1,7 +1,7 @@
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class KPasswordTextformfield extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;

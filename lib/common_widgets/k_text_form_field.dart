@@ -1,6 +1,6 @@
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class KTextFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -9,7 +9,7 @@ class KTextFormField extends StatelessWidget {
   final TextInputType keyBoard;
   final String labelText;
 
-  KTextFormField(
+  const KTextFormField(
       {super.key,
       required this.hintText,
       required this.labelText,

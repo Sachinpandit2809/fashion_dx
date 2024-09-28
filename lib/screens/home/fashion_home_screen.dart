@@ -48,7 +48,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                   padding: const EdgeInsets.fromLTRB(18.0, 40, 18, 18),
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.menu, size: 32),
@@ -84,7 +84,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                   },
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Container(
                                         height: 380,
@@ -124,12 +124,13 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                                   style: KTextStyle.k_18),
                                             ],
                                           ),
-                                          Spacer(),
+                                          // Spacer(),
                                           FlexibleButton(
                                               btnColor: Colors.red,
                                               width: 120,
                                               title: "DELETE",
-                                              loading: productController.deleteProductLoading,
+                                              loading: productController
+                                                  .deleteProductLoading,
                                               onPress: () {
                                                 productController.deleteProduct(
                                                     {
@@ -142,9 +143,9 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                                     },
                                                     context);
                                               }),
-                                          SizedBox(
-                                            width: 20,
-                                          )
+                                          // SizedBox(
+                                          //   width: 20,
+                                          // )
                                         ],
                                       ),
                                       // Divider(),
@@ -171,7 +172,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
           onPressed: () {
             value.setImageToNull();
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddFashionScreen()));
+                MaterialPageRoute(builder: (context) => const AddFashionScreen()));
           },
           child: const Icon(Icons.add),
         );

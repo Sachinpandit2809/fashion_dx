@@ -1,4 +1,4 @@
-import 'package:fashion_dx/repository/add_product_repository.dart';
+import 'package:fashion_dx/repository/product_repository.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
 import 'package:fashion_dx/utIls/utils.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class ProductController with ChangeNotifier {
     notifyListeners();
   }
 
-  final _myRepo = AddProductRepository();
+  final _myRepo = ProductRepository();
   void addProduct(dynamic data, BuildContext context) async {
     setaddProductLoading(true);
     _myRepo.addProductApi(data).then((value) {
@@ -19,7 +19,7 @@ class ProductController with ChangeNotifier {
       setaddProductLoading(false);
 
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => FashionHomeScreen()));
+          MaterialPageRoute(builder: (context) => const FashionHomeScreen()));
     }).onError((error, stack) {
       setaddProductLoading(false);
     });
@@ -57,7 +57,8 @@ class ProductController with ChangeNotifier {
     _myRepo.deleteProductApi(id).then((value) {
       Utils.toastSuccessMessage("deleted product");
       setdeleteProductLoading(false);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> FashionHomeScreen()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => FashionHomeScreen()));
     }).onError(
       (error, stackTrace) {
         Utils.toastErrorMessage(error.toString());

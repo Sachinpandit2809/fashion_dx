@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fashion_dx/utIls/utils.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -36,7 +37,7 @@ class ImageController with ChangeNotifier {
     if (pickedFile != null) {
       setImage(File(pickedFile.path));
 
-      print("Image selected: $_image");
+      debugPrint("Image selected: $_image");
       Utils.toastSuccessMessage("image selected now upload");
     } else {
       Utils.toastErrorMessage("Image not selected");
@@ -66,7 +67,7 @@ class ImageController with ChangeNotifier {
     } catch (e) {
       setUploadLoading(false);
 
-      Utils.toastErrorMessage("Error uploading image" + e.toString());
+      Utils.toastErrorMessage("Error uploading image$e");
       debugPrint("Error uploading image: $e");
     }
   }

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fashion_dx/common_widgets/flexible_button.dart';
 import 'package:fashion_dx/common_widgets/k_text_form_field.dart';
 import 'package:fashion_dx/modals/fashion_home.dart';
@@ -12,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class EditProductScreen extends StatefulWidget {
   FashionData? fashionData;
   EditProductScreen({super.key, required this.fashionData});
@@ -29,12 +28,21 @@ class _EditProductScreenState extends State<EditProductScreen> {
   String image = '';
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     titleController.text = widget.fashionData!.title.toString();
     descriptionController.text = widget.fashionData!.description.toString();
     priceController.text = widget.fashionData!.price.toString();
     // image = widget.fashionData!.image.toString();
+  }
+
+  @override
+  void dispose() {
+
+    super.dispose();
+    titleController.dispose();
+    descriptionController.dispose();
+    priceController.dispose();
+
   }
 
   @override

@@ -34,9 +34,9 @@ class _UploadImageState extends State<UploadImage> {
     try {
       await storageRef.putFile(file).timeout(const Duration(minutes: 2));
     } on FirebaseException catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
   }
 
