@@ -33,7 +33,7 @@ class _VarificationScreenState extends State<VarificationScreen> {
   );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {       
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

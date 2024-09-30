@@ -2,7 +2,6 @@ import 'package:fashion_dx/resource/styles/app_colors.dart';
 import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:flutter/material.dart';
 
-
 // ignore: must_be_immutable
 class FlexibleButton extends StatefulWidget {
   String title;
@@ -35,7 +34,7 @@ class _FlexibleButtonState extends State<FlexibleButton> {
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.white, width: 2),
+          // border: Border.all(color: AppColors.white, width: 2),
           borderRadius: BorderRadius.circular(30),
           color: widget.btnColor,
         ),

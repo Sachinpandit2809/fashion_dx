@@ -2,6 +2,9 @@ import 'package:fashion_dx/screen_controller/authController/auth_controller.dart
 import 'package:fashion_dx/screen_controller/authController/firebase_auth_controller.dart';
 import 'package:fashion_dx/screen_controller/screenController/product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
+import 'package:fashion_dx/screens/details_screen/product_cart_screen.dart';
+import 'package:fashion_dx/screens/details_screen/product_checkout_screen.dart';
+import 'package:fashion_dx/screens/details_screen/product_details_screen.dart';
 // import 'package:fashion_dx/screens/home/add_product_screen.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +38,12 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: const FashionHomeScreen(),
+        home: const ProductDetailsScreen(),
       ),
     );
   }
