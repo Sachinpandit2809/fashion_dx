@@ -6,6 +6,7 @@ import 'package:fashion_dx/resource/styles/k_text_style.dart';
 import 'package:fashion_dx/screen_controller/screenController/fashion_home_controller.dart';
 import 'package:fashion_dx/screen_controller/screenController/product_controller.dart';
 import 'package:fashion_dx/screen_controller/services/image_controller.dart';
+import 'package:fashion_dx/screens/details_screen/product_cart_screen.dart';
 import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
 // import 'package:fashion_dx/screens/home/add_product_screen.dart';
 import 'package:fashion_dx/screens/home/edit_product_screen.dart';
@@ -48,7 +49,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                   padding: const EdgeInsets.fromLTRB(18.0, 40, 18, 18),
                   child: Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.menu, size: 32),
@@ -56,9 +57,18 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                             "GemStore",
                             style: KTextStyle.k_20,
                           ),
-                          Icon(
-                            Icons.notification_add_sharp,
-                            size: 32,
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProductCartScreen())) ;
+                            },
+                            child: Icon(
+                              Icons.notification_add_sharp,
+                              size: 32,
+                            ),
                           )
                         ],
                       ),
@@ -171,8 +181,10 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
         return FloatingActionButton(
           onPressed: () {
             value.setImageToNull();
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddFashionScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddFashionScreen()));
           },
           child: const Icon(Icons.add),
         );

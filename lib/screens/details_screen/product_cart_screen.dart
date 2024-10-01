@@ -22,13 +22,17 @@ class _ProductCartScreenState extends State<ProductCartScreen> {
         child: Column(
           children: [
             65.heightBox,
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.arrow_back_ios),
-                  Text(
+                  InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(Icons.arrow_back_ios)),
+                  const Text(
                     "Your Cart",
                     style: KTextStyle.k_20,
                   ),

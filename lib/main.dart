@@ -5,8 +5,11 @@ import 'package:fashion_dx/screen_controller/services/image_controller.dart';
 import 'package:fashion_dx/screens/details_screen/product_cart_screen.dart';
 import 'package:fashion_dx/screens/details_screen/product_checkout_screen.dart';
 import 'package:fashion_dx/screens/details_screen/product_details_screen.dart';
+import 'package:fashion_dx/screens/details_screen/product_payment_screen.dart';
 // import 'package:fashion_dx/screens/home/add_product_screen.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
+import 'package:fashion_dx/screens/orders/delevered_screen.dart';
+import 'package:fashion_dx/screens/orders/product_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: const ProductDetailsScreen(),
+        home: const DeleveredScreen(),
       ),
     );
   }

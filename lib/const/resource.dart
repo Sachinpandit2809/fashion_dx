@@ -12,6 +12,10 @@ class R {
   static const String ASSETS_IMAGES_PNG_GOOGLE_PNG =
       'assets/images/png/google.png';
 
+  /// ![preview](file://C:\Users\dream\Desktop\fashion_dx\assets\images\png\order_delivered.png)
+  static const String ASSETS_IMAGES_PNG_ORDER_DELIVERED_PNG =
+      'assets/images/png/order_delivered.png';
+
   /// ![preview](file://C:\Users\dream\Desktop\fashion_dx\assets\images\png\splash.png)
   static const String ASSETS_IMAGES_PNG_SPLASH_PNG =
       'assets/images/png/splash.png';
