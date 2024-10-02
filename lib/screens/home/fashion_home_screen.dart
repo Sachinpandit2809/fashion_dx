@@ -10,6 +10,7 @@ import 'package:fashion_dx/screens/details_screen/product_cart_screen.dart';
 import 'package:fashion_dx/screens/home/add_fashion_screen.dart';
 // import 'package:fashion_dx/screens/home/add_product_screen.dart';
 import 'package:fashion_dx/screens/home/edit_product_screen.dart';
+import 'package:fashion_dx/screens/profile/my_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +53,11 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(Icons.menu, size: 32),
+                          GestureDetector(
+                              onTap: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              child: Icon(Icons.menu, size: 32)),
                           Text(
                             "GemStore",
                             style: KTextStyle.k_20,
@@ -63,7 +68,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          ProductCartScreen())) ;
+                                          ProductCartScreen()));
                             },
                             child: Icon(
                               Icons.notification_add_sharp,
@@ -176,6 +181,7 @@ class _FashionHomeScreenState extends State<FashionHomeScreen> {
           },
         ),
       ),
+      drawer: MyDrawer(),
       floatingActionButton:
           Consumer<ImageController>(builder: (context, value, _) {
         return FloatingActionButton(
