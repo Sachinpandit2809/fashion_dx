@@ -10,6 +10,8 @@ import 'package:fashion_dx/screens/details_screen/product_payment_screen.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
 import 'package:fashion_dx/screens/orders/delevered_screen.dart';
 import 'package:fashion_dx/screens/orders/product_order_screen.dart';
+import 'package:fashion_dx/services/local_storage/shared_prefs.dart';
+import 'package:fashion_dx/services/local_storage/storage_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +22,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await StorageUtil().initLocalServices();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -35,8 +38,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthController()),
-        ChangeNotifierProvider(create: (_) => ImageController()),
-        ChangeNotifierProvider(create: (_) => ProductController()),
+        ChangeNotifierProvider(create: (_) => ImageController(), lazy: true,),
+        ChangeNotifierProvider(create: (_) => ProductController(), lazy:  true,),
         ChangeNotifierProvider(create: (_) => FirebaseAuthController())
       ],
       child: MaterialApp(
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: const FashionHomeScreen(),
+        home: const ProductDetailsScreen(),
       ),
     );
   }

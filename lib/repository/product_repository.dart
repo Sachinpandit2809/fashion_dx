@@ -32,8 +32,7 @@ class ProductRepository {
           await _apiServices.getDeleteApiService(ApiUrl.fashon_home, id);
       return response;
     } catch (e) {
-      // ignore: use_rethrow_when_possible
-      throw e;
+      rethrow;
     }
   }
 }

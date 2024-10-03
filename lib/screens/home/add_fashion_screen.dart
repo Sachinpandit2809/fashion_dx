@@ -156,7 +156,8 @@ class _AddFashionScreenState extends State<AddFashionScreen> {
                               'image': imageController.imageUrl,
                               'description':
                                   descriptionController.text.toString(),
-                              'price': priceController.text.toString()
+                              'price': priceController.text.toString(),
+                              
                             };
                             addProductController.addProduct(data, context);
                           }),

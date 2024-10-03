@@ -1,9 +1,14 @@
+import 'package:fashion_dx/modals/user_model.dart';
+import 'package:fashion_dx/modals/user_model.dart';
 import 'package:fashion_dx/repository/auth_repository.dart';
 import 'package:fashion_dx/screens/home/fashion_home_screen.dart';
+import 'package:fashion_dx/service_locater/service_locator.dart';
+import 'package:fashion_dx/services/local_storage/storage_util.dart';
 import 'package:fashion_dx/utIls/utils.dart';
 import 'package:flutter/material.dart';
 
 class AuthController with ChangeNotifier {
+  final StorageUtil _storageUtil = StorageUtil();
   final _myRepo = AuthRepository();
   bool _loginLoading = false;
   bool get loginLoading => _loginLoading;
@@ -15,12 +20,20 @@ class AuthController with ChangeNotifier {
   Future<void> login(dynamic data, BuildContext context) async {
     setLoginLoading(true);
 
-    _myRepo.loginApi(data).then((value) {
+    try {
+      final value = await _myRepo.loginApi(data);
       setLoginLoading(false);
       debugPrint(value.toString());
+      final  userModel = UserModel.fromJson(value);
+      getIt.registerSingleton<UserModel>(userModel);
+      final userData = userModel.encodedJson;
+      await _storageUtil.saveUserData(userData);
       Utils.toastSuccessMessage(value['message'].toString());
-      Navigator.push(context, MaterialPageRoute(builder: (context) => FashionHomeScreen()));
-    }).onError((error, stackTrace) {
+      if (context.mounted) {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => FashionHomeScreen()));
+      }
+    } catch (error, stk) {
       setLoginLoading(false);
       debugPrint(error.toString());
       if (error.toString() == '{"message":"User not found"}invalid request') {
@@ -29,7 +42,7 @@ class AuthController with ChangeNotifier {
           '{"message":"Invalid credentials"}invalid request') {
         Utils.toastErrorMessage('wrong password');
       }
-    });
+    }
   }
 
   bool _signUpLoading = false;
@@ -37,6 +50,12 @@ class AuthController with ChangeNotifier {
   void setSignUpLoading(bool load) {
     _signUpLoading = load;
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    //somcontroller.dispose();  
   }
 
   Future<void> signup(dynamic data) async {
