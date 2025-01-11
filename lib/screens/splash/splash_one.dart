@@ -65,3 +65,5 @@ class _SplashOneState extends State<SplashOne> {
     );
   }
 }
+
+//streak
